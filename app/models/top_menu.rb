@@ -16,4 +16,10 @@ class TopMenu < ActiveRecord::Base
 
   validates :name, presence: true
   validates :page_type, presence: true
+
+  ACTIVE = 'active'
+  HIDDEN = 'hidden'
+
+  default_scope { order(:position) }
+  scope :active, -> { where(state: ACTIVE) }
 end

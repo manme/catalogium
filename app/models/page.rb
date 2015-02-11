@@ -13,4 +13,7 @@
 
 class Page < ActiveRecord::Base
   has_one :top_menu
+
+  validates :title, presence: true
+  validates :slug, presence: true
 end

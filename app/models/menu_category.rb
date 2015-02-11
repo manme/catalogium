@@ -11,4 +11,10 @@
 
 class MenuCategory < ActiveRecord::Base
   belongs_to :category, dependent: :destroy
+
+  ACTIVE = 'active'
+  HIDDEN = 'hidden'
+
+  default_scope { order(:position) }
+  scope :active, -> { where(state: ACTIVE) }
 end

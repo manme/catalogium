@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :categories
 
     resources :photos, only: [:create, :update, :destroy]
-    root 'menus#index'
+    root 'catalogs#index'
   end
 
   root 'pages#index'
