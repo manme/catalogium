@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211081020) do
+ActiveRecord::Schema.define(version: 20150211094014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email"
@@ -47,6 +48,19 @@ ActiveRecord::Schema.define(version: 20150211081020) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "file"
+    t.hstore   "modification"
+    t.string   "resource_token"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "photos", ["imageable_id", "imageable_type"], name: "index_photos_on_imageable_id_and_imageable_type", using: :btree
+  add_index "photos", ["resource_token"], name: "index_photos_on_resource_token", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
