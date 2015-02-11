@@ -18,9 +18,14 @@ module Catalogium
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :ru
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.assets.precompile += %w( .svg .eot .woff .ttf)
+
+    config.assets.precompile += %w(site.css site.js admin.css admin.js)
   end
 end

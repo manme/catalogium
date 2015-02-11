@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :position
       t.string :state
       t.jsonb :content
+      t.references :category
 
       t.timestamps null: false
     end

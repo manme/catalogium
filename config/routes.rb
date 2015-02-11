@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     root 'pages#index'
   end
 
-
+  root 'pages#index'
 end

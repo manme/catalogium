@@ -25,5 +25,10 @@ gem 'bootstrap_helper'
 gem 'font-awesome-sass'
 gem 'rails-assets-bootstrap-sweetalert'
 
+group :development do
+  gem 'annotate'
+end
+
+
 
 

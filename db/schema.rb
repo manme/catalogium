@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210055912) do
+ActiveRecord::Schema.define(version: 20150211081020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -26,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150210055912) do
   end
 
   create_table "menu_categories", force: :cascade do |t|
-    t.integer  "categories_id"
+    t.integer  "category_id"
     t.integer  "position"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "pages", force: :cascade do |t|
@@ -49,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150210055912) do
     t.integer  "position"
     t.string   "state"
     t.jsonb    "content"
+    t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -57,9 +65,12 @@ ActiveRecord::Schema.define(version: 20150210055912) do
     t.string   "name"
     t.string   "page_type"
     t.integer  "position"
-    t.integer  "pages_id"
+    t.integer  "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "menu_categories", "categories"
+  add_foreign_key "products", "categories"
+  add_foreign_key "top_menus", "pages"
 end

@@ -1,1 +1,6 @@
-| menu
+= render_list class: 'top-menu' do |li|
+  - li << link_to('Каталог', root_path)
+  - li << link_to('Как купить?', root_path)
+  - li << link_to('Контакты', root_path)
+
+

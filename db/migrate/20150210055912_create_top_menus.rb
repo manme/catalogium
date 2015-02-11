@@ -4,7 +4,7 @@ class CreateTopMenus < ActiveRecord::Migration
       t.string :name
       t.string :page_type
       t.integer :position
-      t.references :pages
+      t.references :page
 
       t.timestamps null: false
     end
