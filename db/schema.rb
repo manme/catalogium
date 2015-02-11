@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211094014) do
+ActiveRecord::Schema.define(version: 20150211110450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20150211094014) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "catalogs", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -73,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150211094014) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "catalog_id"
   end
 
   create_table "top_menus", force: :cascade do |t|
@@ -85,6 +94,7 @@ ActiveRecord::Schema.define(version: 20150211094014) do
   end
 
   add_foreign_key "menu_categories", "categories"
+  add_foreign_key "products", "catalogs"
   add_foreign_key "products", "categories"
   add_foreign_key "top_menus", "pages"
 end

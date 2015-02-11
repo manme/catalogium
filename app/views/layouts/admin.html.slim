@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title
+    = stylesheet_link_tag    'site', media: 'all'
+    = javascript_include_tag 'site'
+    = csrf_meta_tags
+  body
+    .wrapper
+      = render 'header'
+      = yield
