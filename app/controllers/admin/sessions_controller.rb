@@ -1,5 +1,6 @@
 class Admin::SessionsController < AdminController
   skip_before_action :authenticate_admin
+  before_action :signed_admin, only: [:new]
 
   def new
   end

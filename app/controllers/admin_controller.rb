@@ -26,4 +26,8 @@ class AdminController < ActionController::Base
   def sign_out_admin
     session[:admin_id] = nil
   end
+
+  def signed_admin
+    redirect_to admin_catalogs_path if admin_signed_in?
+  end
 end

@@ -1,4 +1,4 @@
-class SiteFacade
+class Site::SiteFacade
   def initialize
     @top_menu = TopMenu.active
     @category_menu = MenuCategory.active

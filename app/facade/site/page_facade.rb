@@ -1,4 +1,4 @@
-class PageFacade
+class Site::PageFacade
   attr_reader :page
 
   def initialize slug

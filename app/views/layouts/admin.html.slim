@@ -7,5 +7,6 @@ html
     = csrf_meta_tags
   body
     .wrapper
-      = render 'header'
+      - if admin_signed_in?
+        = render 'header'
       = yield

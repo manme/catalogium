@@ -1,0 +1,10 @@
+.ui.page.action
+  .column
+    .ui.inverted.black.menu
+      .left.menu
+        = link_to 'Каталог', admin_catalogs_path, class: 'item'
+        = link_to 'Страницы', admin_pages_path, class: 'item'
+        = link_to 'Категории', admin_categories_path, class: 'item'
+        = link_to 'Меню', admin_menus_path, class: 'item'
+      .right.menu
+        = link_to 'Выйти', admin_sign_out_path, method: :delete, class: 'item'

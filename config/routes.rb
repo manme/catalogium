@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :menus
     resources :pages
     resources :categories
+    resources :catalogs
 
     resources :photos, only: [:create, :update, :destroy]
     root 'catalogs#index'

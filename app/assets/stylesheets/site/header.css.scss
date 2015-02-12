@@ -1,6 +1,9 @@
 .header {
   .header-logo {
-
+    background: inline('site/header/logo.png') 0 0 no-repeat;
+    width: 200px;
+    height: 53px;
+    position: relative;
   }
 
   .header-top-right {
