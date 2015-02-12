@@ -1,8 +1,10 @@
 - if object.errors.any?
-  .alert.alert-danger
-    | The form contains
-    = pluralize(object.errors.count, "error")
-    | .
-    ul
+  .ui.icon.error.message
+    i.attention.circle.icon
+    .content
+      .header
+        | The form contains
+        = pluralize(object.errors.count, "error")
+        | .
       - object.errors.full_messages.each do |msg|
-        li= msg
+        p = msg
