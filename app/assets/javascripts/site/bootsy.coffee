@@ -1,0 +1,2 @@
+$ ->
+  Bootsy.init()

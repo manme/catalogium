@@ -12,6 +12,8 @@
 #
 
 class Page < ActiveRecord::Base
+  include Bootsy::Container
+
   has_one :top_menu
 
   validates :title, presence: true

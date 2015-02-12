@@ -1,24 +1,28 @@
-
-  = form_for @section, url: locals[:url] do |f|
+.ui.header Страница
+.ui.form.segment.black
+  = form_for @facade.page, url: locals[:url] do |f|
     = render 'admin/layouts/error_messages', object: f.object
-    .row
-      .col-md-7
-        .form-group
-          = f.label t('admin.sections.name'), class: 'control-label'
-          = f.text_field :name, class: "form-control"
-      .col-md-2
-        .form-group
-          = f.label t('admin.sections.position'), class: 'control-label'
-          = f.text_field :position, class: "form-control"
-    .row.col-md-12
-      .form-group
-        .row
-          .col-md-7
-            - if locals[:edit]
-              = link_to t('admin.form.back'), :back, class: 'btn btn-default'
-              = " "
-            = f.submit locals[:submit], class: 'btn btn-success'
-          .col-md-4
-            - if locals[:edit]
-              = link_to t('admin.form.delete'), admin_conference_section_path(current_conference.id, @section), method: :delete, class: 'btn btn-danger', data: {confirm: t('admin.form.sure_delete')}
+    .field
+      h5
+        = f.label t('admin.pages.title'), class: 'control-label'
+      .ui.input.fluid
+        = f.text_field :title
+    h5.ui.attached.segment.black
+      = f.label t('admin.pages.content'), class: 'control-label'
+    .ui.attached.segment.black
+      .field
+        = f.bootsy_area :content, rows: 10, class: ''
+    .field
+      h5
+        = f.label t('admin.pages.slug'), class: 'control-label'
+      .ui.input.fluid
+        = f.text_field :slug
+    .ui.divider
+    - if locals[:edit]
+      = link_to t('admin.form.back'), :back, class: 'ui black basic button'
+      = " "
+    = f.submit locals[:submit], class: 'ui inverted green button'
+    - if locals[:edit]
+      = " "
+      = link_to t('admin.form.delete'), admin_page_path(@facade.page), method: :delete, class: 'ui inverted red button', data: {confirm: t('admin.form.sure_delete')}
 

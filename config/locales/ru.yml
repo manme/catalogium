@@ -19,9 +19,16 @@ ru:
     form:
       submit: "Добавить"
       update: "Обновить"
+      back: "Назад"
+      sure_delete: "Действительно хотите удалить?"
     sessions:
       signed_in: Вход в систему выполнен.
       signed_out: Выход из системы выполнен.
+    pages:
+      title: "Заголовок"
+      content: "Контент"
+      slug: 'web-адрес страницы (a-z)'
+
   activerecord:
     errors:
       format: '%{attribute} %{message}'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   namespace :site, path: ''  do
     resources :pages, only: [:index, :show]
     root 'pages#index'
