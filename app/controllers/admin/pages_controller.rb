@@ -48,7 +48,7 @@ class Admin::PagesController < AdminController
   private
 
   def set_facade
-    @facade = PageFacade.new
+    @facade = Admin::PageFacade.new
   end
 
   def set_page

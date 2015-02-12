@@ -10,4 +10,20 @@ class Admin::PageFacade
     @pages = Page.all
   end
 
+  def find id
+    @page = Page.find id
+  end
+
+  def create params
+    @page = Page.new params
+    @page.save
+  end
+
+  def update params
+    @page.update params
+  end
+
+  def destroy
+    @page.destroy
+  end
 end

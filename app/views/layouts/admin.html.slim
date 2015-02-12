@@ -8,5 +8,5 @@ html
   body
     .wrapper
       - if admin_signed_in?
-        = render 'header'
+        = render 'admin/layout/header'
       = yield
