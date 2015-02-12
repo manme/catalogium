@@ -18,4 +18,27 @@ class Page < ActiveRecord::Base
 
   validates :title, presence: true
   validates :slug, presence: true
+  validates :page_type, presence: true
+
+  EDITABLE_TYPE = 'editable'
+  FIXED_TYPE = 'fixed'
+  EMPTY_TYPE = 'empty'
+
+  before_validation :default_values
+  def default_values
+    self.page_type ||= EDITABLE_TYPE
+  end
+
+  def disabled? field
+
+    return true if page_type == EMPTY_TYPE
+
+    if page_type == FIXED_TYPE
+      return true if field.to_sym == :title
+      return true if field.to_sym == :slug
+      return true if field.to_sym == :delete
+    end
+
+    false
+  end
 end

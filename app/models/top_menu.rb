@@ -12,10 +12,11 @@
 #
 
 class TopMenu < ActiveRecord::Base
+  acts_as_list
+
   belongs_to :page, dependent: :destroy
 
   validates :name, presence: true
-  validates :page_type, presence: true
 
   ACTIVE = 'active'
   HIDDEN = 'hidden'

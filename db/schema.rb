@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212111939) do
+ActiveRecord::Schema.define(version: 20150212161707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150212111939) do
     t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "page_type"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -100,7 +101,6 @@ ActiveRecord::Schema.define(version: 20150212111939) do
 
   create_table "top_menus", force: :cascade do |t|
     t.string   "name"
-    t.string   "page_type"
     t.integer  "position"
     t.integer  "page_id"
     t.datetime "created_at", null: false

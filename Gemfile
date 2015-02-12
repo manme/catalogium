@@ -26,7 +26,8 @@ gem 'font-awesome-sass'
 gem 'rails-assets-bootstrap-sweetalert'
 gem 'rails-assets-semantic-ui', '1.8.1'
 gem 'rails-sass-images'
-gem "autoprefixer-rails"
+gem 'autoprefixer-rails'
+gem 'acts_as_list'
 
 group :development do
   gem 'annotate'

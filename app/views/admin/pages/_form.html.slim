@@ -6,23 +6,24 @@
       h5
         = f.label t('admin.pages.title'), class: 'control-label'
       .ui.input.fluid
-        = f.text_field :title
+        = f.text_field :title, disabled: @facade.page.disabled?(:title)
     h5.ui.attached.segment.black
       = f.label t('admin.pages.content'), class: 'control-label'
     .ui.attached.segment.black
       .field
-        = f.bootsy_area :content, rows: 10, class: ''
+        = f.bootsy_area :content, rows: 10, class: '', disabled: @facade.page.disabled?(:content)
     .field
       h5
         = f.label t('admin.pages.slug'), class: 'control-label'
       .ui.input.fluid
-        = f.text_field :slug
+        = f.text_field :slug, disabled: @facade.page.disabled?(:slug)
     .ui.divider
     - if locals[:edit]
       = link_to t('admin.form.back'), :back, class: 'ui black basic button'
       = " "
-    = f.submit locals[:submit], class: 'ui inverted green button'
-    - if locals[:edit]
+    - unless @facade.page.disabled?(:submit)
+      = f.submit locals[:submit], class: 'ui inverted green button'
+    - if locals[:edit] && !@facade.page.disabled?(:delete)
       = " "
       = link_to t('admin.form.delete'), admin_page_path(@facade.page), method: :delete, class: 'ui inverted red button', data: {confirm: t('admin.form.sure_delete')}
 
