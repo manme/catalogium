@@ -9,4 +9,6 @@ html
     .wrapper.container
       - if admin_signed_in?
         = render 'admin/layouts/header'
+
+      = render_flash
       = yield

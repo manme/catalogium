@@ -25,9 +25,33 @@ ru:
       signed_in: Вход в систему выполнен.
       signed_out: Выход из системы выполнен.
     pages:
+      form_name: "Страница"
       title: "Заголовок"
       content: "Контент"
-      slug: 'web-адрес страницы (a-z)'
+      slug: "web-адрес страницы (a-z)"
+      slug_name: "Адрес"
+      add_page: "Добавить страницу"
+      created: "Страница добавлена"
+      error_create: "Ошибка при добавлении страницы"
+      updated: "Страница обновлена"
+      error_update: "Ошибка при обновлении страницы"
+      deleted: "Страница удалена"
+      error_delete: "Ошибка при удалении страницы"
+    catalogs:
+      form_name: "Каталог"
+      title: "Название"
+      description: "Описание"
+      slug: "web-адрес каталога (a-z)"
+      slug_name: "Адрес"
+      add_catalog: "Добавить каталог"
+      products: "Товар"
+      add_product: "Просмотр"
+      created: "Каталог добавлен"
+      error_create: "Ошибка при добавлении каталога"
+      updated: "Каталог обновлен"
+      error_update: "Ошибка при обновеуыетлении каталога"
+      deleted: "Каталог удален"
+      error_delete: "Ошибка при удалении каталога"
 
   activerecord:
     errors:

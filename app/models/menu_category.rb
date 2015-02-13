@@ -2,11 +2,11 @@
 #
 # Table name: menu_categories
 #
-#  id            :integer          not null, primary key
-#  categories_id :integer
-#  position      :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id          :integer          not null, primary key
+#  category_id :integer
+#  position    :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class MenuCategory < ActiveRecord::Base

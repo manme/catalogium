@@ -4,9 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  page_type  :string
 #  position   :integer
-#  pages_id   :integer
+#  page_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

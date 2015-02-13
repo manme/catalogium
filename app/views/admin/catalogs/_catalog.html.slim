@@ -1,0 +1,4 @@
+tr
+  td.collapsing = link_to t('admin.catalogs.add_product'), admin_catalog_products_path(catalog)
+  td = link_to catalog.title, edit_admin_catalog_path(catalog)
+  td = catalog.slug

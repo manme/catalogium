@@ -1,0 +1,15 @@
+.ui.divider
+.ui.header Настройка основного меню
+.ui.page.action
+  .column
+    .ui.black.menu
+      .left.menu
+        - @facade.top_menus.each do |item|
+          .item
+            .header = item.name
+
+
+
+
+.ui.divider
+.ui.header Настройка меню каталога

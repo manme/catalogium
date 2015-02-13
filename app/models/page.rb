@@ -9,6 +9,7 @@
 #  state      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  page_type  :string
 #
 
 class Page < ActiveRecord::Base

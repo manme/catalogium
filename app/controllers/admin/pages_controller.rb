@@ -17,19 +17,20 @@ class Admin::PagesController < AdminController
 
   def create
     if @facade.create page_params
-      flash[:success] = "Страница добавлена"
+      flash[:success] = t('admin.pages.created')
       redirect_to admin_pages_path
     else
-      @facade.all
-      render :index
+      flash[:error] = t('admin.pages.error_create')
+      render :new
     end
   end
 
   def update
     if @facade.update page_params
-      flash[:success] = "Страница обновлена"
+      flash[:success] = t('admin.pages.updated')
       redirect_to admin_pages_path
     else
+      flash[:error] = t('admin.pages.error_update')
       render :edit
     end
 
@@ -37,10 +38,10 @@ class Admin::PagesController < AdminController
 
   def destroy
     if @facade.destroy
-      flash[:success] = "Страница удалена"
+      flash[:success] = t('admin.pages.deleted')
       redirect_to admin_pages_path
     else
-      flash[:danger] = "Ошибка при удалении страницы"
+      flash[:error] = t('admin.pages.error_delete')
       redirect_to admin_pages_path
     end
   end

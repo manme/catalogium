@@ -1,10 +1,10 @@
 .ui.divider
-= link_to 'Добавить страницу', new_admin_page_path, class: 'ui black basic button'
+= link_to t('admin.pages.add_page'), new_admin_page_path, class: 'ui black basic button'
 .ui.divider
-table.ui.table
+table.ui.table.celled.striped
   thead
     tr
-      th Заголовок
-      th Адрес
+      th = t('admin.pages.title')
+      th = t('admin.pages.slug_name')
   tbody
     = render @facade.pages

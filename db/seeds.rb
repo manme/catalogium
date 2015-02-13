@@ -13,3 +13,8 @@ TopMenu.create(name: 'Главная', page_id: page.id)
 
 page = Page.create(title: 'Каталог', page_type: Page::EMPTY_TYPE, slug: 'catalog')
 TopMenu.create(name: 'Каталог', page_id: page.id)
+
+page = Page.create(title: 'Контакты', page_type: Page::EDITABLE_TYPE, slug: 'contacts')
+TopMenu.create(name: 'Контакты', page_id: page.id)
+
+

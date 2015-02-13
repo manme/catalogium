@@ -9,11 +9,13 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create]
     delete 'sign_out' => 'sessions#destroy', as: :sign_out
 
-    resources :products
     resources :menus
     resources :pages
     resources :categories
-    resources :catalogs
+
+    resources :catalogs do
+      resources :products
+    end
 
     resources :photos, only: [:create, :update, :destroy]
     root 'catalogs#index'
