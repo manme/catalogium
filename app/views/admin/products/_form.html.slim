@@ -1,0 +1,31 @@
+.ui.header = t('admin.products.form_name')
+.ui.form.segment.black
+  = form_for @facade.product, url: locals[:url] do |f|
+    = render 'admin/layouts/error_messages', object: f.object
+    .field
+      h5
+        = f.label t('admin.catalogs.title'), class: 'control-label'
+      .ui.input.fluid
+        = f.text_field :title
+    h5.ui.attached.segment.black
+      = f.label t('admin.catalogs.description'), class: 'control-label'
+    .ui.attached.segment.black
+      .field
+        = f.text_area :description, rows: 1, class: ''
+    .field
+      h5
+        = f.label t('admin.products.sku'), class: 'control-label'
+      .ui.input
+        = f.text_field :sku
+
+    .ui.divider
+    = render 'admin/shared/photo_uploader', object: @facade.product
+    .ui.divider
+    - if locals[:edit]
+      = link_to t('admin.form.back'), :back, class: 'ui black basic button'
+      = " "
+    = f.submit locals[:submit], class: 'ui inverted green button'
+    - if locals[:edit]
+      = " "
+      = link_to t('admin.form.delete'), admin_catalog_product_path(@facade.catalog, @facade.product), method: :delete, class: 'ui inverted red button', data: {confirm: t('admin.form.sure_delete')}
+

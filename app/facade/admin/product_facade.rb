@@ -1,29 +1,31 @@
 class Admin::ProductFacade
-  attr_reader :pages
-  attr_reader :page
+  attr_reader :catalog
+  attr_reader :products
+  attr_reader :product
 
-  def initialize
-    @page = Page.new
+  def initialize catalog_id
+    @catalog = Catalog.find catalog_id
+    @product = @catalog.products.build
   end
 
   def all
-    @pages = Page.all
+    @products = @catalog.products.all
   end
 
   def find id
-    @page = Page.find id
+    @product = @catalog.products.find id
   end
 
   def create params
-    @page = Page.new params
-    @page.save
+    @product = @catalog.products.build params
+    @product.save
   end
 
   def update params
-    @page.update params
+    @product.update params
   end
 
   def destroy
-    @page.destroy
+    @product.destroy
   end
 end

@@ -1,0 +1,5 @@
+.ui.divider
+= link_to t('admin.products.add_product'), new_admin_catalog_product_path(@facade.catalog), class: 'ui black basic button'
+.ui.divider
+.ui.items
+  = render @facade.products

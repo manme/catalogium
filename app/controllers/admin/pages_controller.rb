@@ -33,7 +33,6 @@ class Admin::PagesController < AdminController
       flash[:error] = t('admin.pages.error_update')
       render :edit
     end
-
   end
 
   def destroy

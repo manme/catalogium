@@ -1,0 +1,32 @@
+.photo-uploader@@photoUploader
+  .photos-list@photos
+    - object.photos.each do |photo|
+      .photo-item@photo data-id=photo.id data-crop-x=modification_values(photo)[:x] data-crop-y=modification_values(photo)[:y] data-crop-width=modification_values(photo)[:width] data-crop-height=modification_values(photo)[:height]  data-ratio=modification_values(photo)[:ratio]
+        = image_tag photo.file.thumb.url, class: 'photo-preview', data: { role: 'photoEditSource', large: photo.file.large.url, origin: photo.file.origin_preview.url, origin_dimensions: photo.dimensions(:file), update_url: admin_photo_path(photo) }
+        = link_to t('admin.actions.edit'), admin_photo_url(photo), class: 'btn btn-default btn-sm btn-block', data: { role: 'editPhoto' }
+        = link_to t('admin.actions.delete'), admin_photo_url(photo), class: 'btn btn-danger btn-sm btn-block', data: { role: 'removePhoto' }
+  .upload-photo@uploader
+    = file_field_tag 'photo[file]', id: 'fileupload', class: 'fileupload', multiple: true, data: { role: 'fileupload', url: admin_photos_path, form_data: { resource_token: @resource_token, authenticity_token: form_authenticity_token } }
+  .loader
+
+  script#thumb-photo-template type="text/x-handlebars-template"
+    .photo-item@photo data-id="{{ id }}" data-crop-x="{{ x }}" data-crop-y="{{ y }}" data-crop-width="{{ width }}" data-crop-height="{{ height }}"  data-ratio="{{ ratio }}"
+      img.photo-preview@photoEditSource src="{{ thumb_url }}" data-large="{{ large_url }}" data-origin="{{ origin_preview_url }}" data-origin-dimensions="{{ json origin_dimensions }}" data-update-url="{{ update_url }}"
+      a.btn.btn-default.btn-sm.btn-block@editPhoto href="/admin/photos/{{ id }}"
+        = t('admin.actions.edit')
+      a.btn.btn-danger.btn-sm.btn-block@removePhoto href="/admin/photos/{{ id }}"
+        = t('admin.actions.delete')
+
+  .modal@editPhotoModal
+    .modal-dialog.edit-photo-dialog
+      .modal-content
+        .modal-header
+          button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            = '&times;'.html_safe
+          h4 class="modal-title" = t('admin.actions.edit')
+        .modal-body
+          .photo-editor@photoEditor
+
+        .modal-footer
+          button type="button" class="btn btn-default" data-dismiss="modal" = t('admin.actions.cancel')
+          button@photoUpdate type="button" class="btn btn-primary" = t('admin.actions.save')

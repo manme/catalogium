@@ -1,0 +1,11 @@
+.item
+  = link_to edit_admin_catalog_product_path(@facade.catalog, product), class: 'ui tiny image' do
+    /= image_tag product.photo(:thumb)
+    .image
+
+  .content
+    = link_to edit_admin_catalog_product_path(@facade.catalog, product), class: 'ui tiny image'
+      .header = product.title
+    .description
+      p
+      = link_to 'Просмотр', admin_catalog_product_path(@facade.catalog, product)

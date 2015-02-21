@@ -18,4 +18,12 @@
 
 class Product < ActiveRecord::Base
   belongs_to :category
+  belongs_to :catalog
+  has_many :photos, as: :imageable, dependent: :destroy
+
+  validates :catalog_id, presence: true
+
+  def image?
+    photos.any?
+  end
 end
