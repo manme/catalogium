@@ -57,6 +57,17 @@ ru:
       error_update: "Ошибка при обновлении каталога"
       deleted: "Каталог удален"
       error_delete: "Ошибка при удалении каталога"
+    categories:
+      form_name: "Категории"
+      title: "Название"
+      description: "Описание"
+      add_category: "Добавить категорию"
+      created: "Категория добавлена"
+      error_create: "Ошибка при добавлении категории"
+      updated: "Категория обновлена"
+      error_update: "Ошибка при обновлении категории"
+      deleted: "Категория удален"
+      error_delete: "Ошибка при удалении категории"
     products:
       form_name: "Товарная позиция"
       title: "Название"
