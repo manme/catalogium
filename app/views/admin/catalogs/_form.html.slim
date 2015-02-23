@@ -1,4 +1,4 @@
-.ui.header Страница
+.ui.header = t('admin.catalogs.form_name')
 .ui.form.segment.black
   = form_for @facade.catalog, url: locals[:url] do |f|
     = render 'admin/layouts/error_messages', object: f.object

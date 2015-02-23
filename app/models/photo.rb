@@ -3,18 +3,13 @@
 # Table name: photos
 #
 #  id             :integer          not null, primary key
-#  imageable_id   :integer
-#  imageable_type :string(255)
-#  resource_token :string(255)
-#  file           :string(255)
-#  created_at     :datetime
-#  updated_at     :datetime
+#  file           :string
 #  modification   :hstore
-#
-# Indexes
-#
-#  index_photos_on_imageable_id_and_imageable_type  (imageable_id,imageable_type)
-#  index_photos_on_resource_token                   (resource_token)
+#  resource_token :string
+#  imageable_id   :integer
+#  imageable_type :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Photo < ActiveRecord::Base

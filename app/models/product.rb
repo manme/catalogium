@@ -14,6 +14,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  catalog_id  :integer
+#  price       :jsonb
 #
 
 class Product < ActiveRecord::Base

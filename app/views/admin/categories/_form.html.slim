@@ -1,0 +1,23 @@
+.ui.header = t('admin.categories.form_name')
+.ui.form.segment.black
+  = form_for @facade.category, url: locals[:url] do |f|
+    = render 'admin/layouts/error_messages', object: f.object
+    .field
+      h5
+        = f.label t('admin.categories.title'), class: 'control-label'
+      .ui.input.fluid
+        = f.text_field :title
+    h5.ui.attached.segment.black
+      = f.label t('admin.categories.description'), class: 'control-label'
+    .ui.attached.segment.black
+      .field
+        = f.text_area :description, rows: 10, class: ''
+
+    .ui.divider
+    - if locals[:edit]
+      = link_to t('admin.form.back'), :back, class: 'ui black basic button'
+      = " "
+    = f.submit locals[:submit], class: 'ui inverted green button'
+    - if locals[:edit]
+      = " "
+      = link_to t('admin.form.delete'), admin_category_path(@facade.category), method: :delete, class: 'ui inverted red button', data: {confirm: t('admin.form.sure_delete')}
