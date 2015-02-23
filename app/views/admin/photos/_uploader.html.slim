@@ -1,0 +1,13 @@
+.photo-uploader@@photoUploader
+  .photos-list@photos
+    /- object.photos.each do |photo|
+    = render object.photos
+
+  .upload-photo@uploader
+    = file_field_tag 'photo[file]', id: 'fileupload', class: 'fileupload', multiple: true, data: { role: 'fileupload', url: admin_photos_path, form_data: { resource_token: @resource_token, authenticity_token: form_authenticity_token } }
+  .loader
+
+  = render 'admin/photos/template'
+  = render 'admin/photos/edit'
+
+

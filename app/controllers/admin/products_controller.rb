@@ -14,6 +14,7 @@ class Admin::ProductsController < AdminController
 
   def create
     if @facade.create product_params
+      PhotoService.new(resource_token_params).attach_to_resource(@facade.product)
       flash[:success] = t('admin.products.created')
       redirect_to admin_catalog_products_path(@facade.catalog)
     else
@@ -24,6 +25,7 @@ class Admin::ProductsController < AdminController
 
   def update
     if @facade.update product_params
+      PhotoService.new(resource_token_params).attach_to_resource(@facade.product)
       flash[:success] = t('admin.products.updated')
       redirect_to admin_catalog_products_path(@facade.catalog)
     else
@@ -61,5 +63,9 @@ class Admin::ProductsController < AdminController
         :content,
         :category_id,
         :catalog_id)
+  end
+
+  def resource_token_params
+    params.require(:product).permit(:resource_token)
   end
 end

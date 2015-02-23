@@ -1,0 +1,13 @@
+.modal@editPhotoModal
+  .modal-dialog.edit-photo-dialog
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+          = '&times;'.html_safe
+        h4 class="modal-title" = t('admin.actions.edit')
+      .modal-body
+        .photo-editor@photoEditor
+
+      .modal-footer
+        button type="button" class="btn btn-default" data-dismiss="modal" = t('admin.actions.cancel')
+        button@photoUpdate type="button" class="btn btn-primary" = t('admin.actions.save')

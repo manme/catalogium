@@ -1,11 +1,13 @@
-
-
 //= require semantic-ui/semantic
+//= require jquery.Jcrop
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootsy';
 
+
 html {
   font-size: 14px;
 }
+
+@import 'admin/photo';

@@ -1,0 +1,7 @@
+script#thumb-photo-template type="text/x-handlebars-template"
+  .photo-item@photo data-id="{{ id }}" data-crop-x="{{ x }}" data-crop-y="{{ y }}" data-crop-width="{{ width }}" data-crop-height="{{ height }}"  data-ratio="{{ ratio }}"
+    img.photo-preview@photoEditSource src="{{ thumb_url }}" data-large="{{ large_url }}" data-origin="{{ origin_preview_url }}" data-origin-dimensions="{{ json origin_dimensions }}" data-update-url="{{ update_url }}"
+    a.btn.btn-default.btn-sm.btn-block@editPhoto href="/admin/photos/{{ id }}"
+      = t('admin.actions.edit')
+    a.btn.btn-danger.btn-sm.btn-block@removePhoto href="/admin/photos/{{ id }}"
+      = t('admin.actions.delete')

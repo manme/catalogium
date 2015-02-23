@@ -2,15 +2,17 @@ evil.block '@@photoUploader',
   _editData: {},
   _thumbTemplate: null,
 
-
-
-
+  removePhotoRequest: (url)->
+    $.ajax
+      url: url
+      type: 'DELETE'
+      dataType: 'json'
 
   init: ->
     $thumbPhotoTemplate = $("#thumb-photo-template")
     if $thumbPhotoTemplate.length > 0
       @_thumbTemplate = Handlebars.compile($thumbPhotoTemplate.html())
-    if $(@photo).length > 0
+    if parseInt(@block.attr('data-photo-max')) > 0 && $(@photo).length > 0
       @uploader.hide()
 
     @fileupload.fileupload({
@@ -22,21 +24,19 @@ evil.block '@@photoUploader',
 
         if result.status is 'created'
           @photos.append(@_thumbTemplate(result))
-          @uploader.hide()
+          if parseInt(@block.attr('data-photo-max')) > 0
+            @uploader.hide()
         else
           console.log 'Error found'
     }).bind 'fileuploadsubmit', (e, data) =>
       @block.addClass('is-submitting')
 
     @editPhotoModal.modal({backdrop: 'static', show: false}).on 'hide.bs.modal', (e)=>
-      console.log @photoEditor
       @photoEditor.html('')
 
   'click on @editPhoto': (e) ->
     e.preventDefault()
-    $photoEditSource = $('@photoEditSource')
-
-    console.log $photoEditSource
+    $photoEditSource = $(e.el).parents('@photo').find('@photoEditSource')
 
     @_editData = {}
     @_editData['dimensions'] = $photoEditSource.data('origin-dimensions')
@@ -57,8 +57,8 @@ evil.block '@@photoUploader',
         ,allowSelect: true
         ,allowMove: true
         ,allowResize: true
-        ,aspectRatio: 1
-        ,bgOpacity: 0.6
+#        ,aspectRatio: 1
+        ,bgOpacity: 0.5
         ,bgColor: 'black'
         ,addClass: 'jcrop-light'
       }, ->

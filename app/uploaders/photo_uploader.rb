@@ -41,11 +41,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :large, from_version: :origin_modified do
-    process resize_to_fill: [400, 400]
+    process resize_to_fit: [400, 400]
   end
 
   version :thumb, from_version: :origin_modified do
-    process resize_to_fill: [200, 200]
+    process resize_to_fit: [200, 200]
   end
 
   def process_image

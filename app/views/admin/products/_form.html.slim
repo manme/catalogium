@@ -19,7 +19,7 @@
         = f.text_field :sku
 
     .ui.divider
-    = render 'admin/shared/photo_uploader', object: @facade.product
+    = render 'admin/photos/uploader', object: @facade.product
     .ui.divider
     - if locals[:edit]
       = link_to t('admin.form.back'), :back, class: 'ui black basic button'

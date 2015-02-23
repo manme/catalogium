@@ -29,6 +29,7 @@ class Photo < ActiveRecord::Base
   # TRANSFORM_HEIGHT = 406
 
   CROP_KEYS = %w(x y width height ratio)
+  ASPECT_RATIO = 0
 
   # Params are: orig_height, orig_width, height = 406, width = 657, angle, top, left, scale
   # attr_reader :transform_params
@@ -108,9 +109,16 @@ class Photo < ActiveRecord::Base
   def set_default_crop
     return unless self.new_record?
     size = self.dimensions(:origin_preview)
-    rect = size.values.min
-    x = (size[:width] - rect) / 2
-    y = (size[:height] - rect) / 2
-    self.modification = { x: x, y: y, width: rect, height: rect }
+
+    if 1 == ASPECT_RATIO
+      width = height = size.values.min
+    else
+      width = size[:width]
+      height = size[:height]
+    end
+
+    x = (size[:width] - width) / 2
+    y = (size[:height] - height) / 2
+    self.modification = { x: x, y: y, width: width, height: width }
   end
 end

@@ -1,0 +1,4 @@
+.photo-item@photo data-id=photo.id data-crop-x=modification_values(photo)[:x] data-crop-y=modification_values(photo)[:y] data-crop-width=modification_values(photo)[:width] data-crop-height=modification_values(photo)[:height]  data-ratio=modification_values(photo)[:ratio] data-photo-max=0
+  = image_tag photo.file.thumb.url, class: 'photo-preview', data: { role: 'photoEditSource', large: photo.file.large.url, origin: photo.file.origin_preview.url, origin_dimensions: photo.dimensions(:file), update_url: admin_photo_path(photo) }
+  = link_to t('admin.actions.edit'), admin_photo_url(photo), class: 'btn btn-default btn-sm btn-block', data: { role: 'editPhoto' }
+  = link_to t('admin.actions.delete'), admin_photo_url(photo), class: 'btn btn-danger btn-sm btn-block', data: { role: 'removePhoto' }
