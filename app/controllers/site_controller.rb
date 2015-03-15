@@ -8,6 +8,6 @@ class SiteController < ActionController::Base
   private
 
   def set_site
-    @site = SiteFacade.new
+    @site = Site::SiteFacade.new
   end
 end

@@ -6,7 +6,7 @@ html
     = javascript_include_tag 'site'
     = csrf_meta_tags
   body
-    .wrapper
+    .wrapper.container
       = render 'site/layouts/header'
       = yield
       = render 'site/layouts/footer'

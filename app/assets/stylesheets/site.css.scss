@@ -1,11 +1,25 @@
 //= require semantic-ui/semantic
+//@import "bootstrap-sprockets";
+//@import "bootstrap";
 
-body {
-
+html {
+  font-size: 14px;
 }
 
-wrapper {
+body {
+  .container {
+    position: relative;
+    width: 915px;
+    margin: 0px auto;
+  }
+}
 
+.top-divider {
+  margin-bottom: -1px !important;
+}
+
+.bottom-divider {
+  margin-top: 0px !important;
 }
 
 @import "site/header";

@@ -1,6 +1,7 @@
-= render_list class: 'top-menu' do |li|
-  - li << link_to('Каталог', root_path)
-  - li << link_to('Как купить?', root_path)
-  - li << link_to('Контакты', root_path)
-
-
+.ui.page.action
+  .column
+    .ui.black.menu
+      .left.menu
+        - @site.top_menu.each do |item|
+          .item
+            .header = link_to(item.name, top_menu_path(item))

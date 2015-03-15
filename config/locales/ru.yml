@@ -73,6 +73,7 @@ ru:
       title: "Название"
       description: "Описание"
       sku: "SKU - (артикул)"
+      category: "Категория"
       add_product: "Добавить товар"
       edit_product: "Редактировать"
       created: "Товарная позиция добавлена"

@@ -9,6 +9,8 @@
 #  content     :jsonb
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  parent_id   :integer
+#  category_id :integer
 #
 
 class Category < ActiveRecord::Base

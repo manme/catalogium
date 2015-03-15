@@ -1,1 +1,8 @@
 = render 'form', locals:{ submit: t('admin.form.submit') , url: admin_categories_path }
+table.ui.table.celled.striped
+  thead
+    tr
+      th = t('admin.categories.title')
+      th = t('admin.categories.description')
+  tbody
+    = render @facade.categories

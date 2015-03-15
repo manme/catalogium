@@ -17,7 +17,7 @@ class Page < ActiveRecord::Base
 
   has_one :top_menu
 
-  validates :title, presence: true
+  # validates :title, presence: true
   validates :slug, presence: true
   validates :page_type, presence: true
 
@@ -35,7 +35,7 @@ class Page < ActiveRecord::Base
     return true if page_type == EMPTY_TYPE
 
     if page_type == FIXED_TYPE
-      return true if field.to_sym == :title
+      # return true if field.to_sym == :title
       return true if field.to_sym == :slug
       return true if field.to_sym == :delete
     end

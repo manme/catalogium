@@ -1,9 +1,19 @@
 class Site::PagesController < SiteController
-  def index
+  before_action :set_facade
 
+  def index
+    render :show
   end
 
   def show
-    @facade = PageFacade.new params[:id]
+  end
+
+  private
+
+  def set_facade
+    slug = params[:id]
+    slug = 'pages' if slug.nil?
+
+    @facade = Site::PageFacade.new slug
   end
 end

@@ -1,6 +1,6 @@
 class Admin::PagesController < AdminController
   before_action :set_facade
-  before_action :set_page, only: [:destroy, :update, :edit]
+  before_action :set_page, only: [:destroy, :update, :edit, :show]
 
   def index
     @facade.all

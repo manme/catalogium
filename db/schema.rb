@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223111858) do
+ActiveRecord::Schema.define(version: 20150315051725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150223111858) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "parent_id"
+    t.integer  "category_id"
   end
 
   create_table "menu_categories", force: :cascade do |t|
@@ -62,7 +63,10 @@ ActiveRecord::Schema.define(version: 20150223111858) do
     t.integer  "position"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "state"
   end
+
+  add_index "menu_categories", ["category_id"], name: "index_menu_categories_on_category_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
@@ -87,6 +91,25 @@ ActiveRecord::Schema.define(version: 20150223111858) do
   add_index "photos", ["imageable_id", "imageable_type"], name: "index_photos_on_imageable_id_and_imageable_type", using: :btree
   add_index "photos", ["resource_token"], name: "index_photos_on_resource_token", using: :btree
 
+  create_table "product_template_options", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.jsonb    "options"
+    t.string   "default"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "product_template_id"
+  end
+
+  add_index "product_template_options", ["product_template_id"], name: "index_product_template_options_on_product_template_id", using: :btree
+
+  create_table "product_templates", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_template_option_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -102,13 +125,19 @@ ActiveRecord::Schema.define(version: 20150223111858) do
     t.jsonb    "price"
   end
 
+  add_index "products", ["catalog_id"], name: "index_products_on_catalog_id", using: :btree
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+
   create_table "top_menus", force: :cascade do |t|
     t.string   "name"
     t.integer  "position"
     t.integer  "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "state"
   end
+
+  add_index "top_menus", ["page_id"], name: "index_top_menus_on_page_id", using: :btree
 
   add_foreign_key "menu_categories", "categories"
   add_foreign_key "products", "catalogs"

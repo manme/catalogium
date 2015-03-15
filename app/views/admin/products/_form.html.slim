@@ -17,6 +17,11 @@
         = f.label t('admin.products.sku'), class: 'control-label'
       .ui.input
         = f.text_field :sku
+    .field
+      h5
+        = f.label t('admin.products.category'), class: 'control-label'
+      .ui.input
+        = f.select :category_id, categories_options_tag(@facade.product.category_id), {}, { class: "form-control" }
 
     .ui.divider
     = render 'admin/photos/uploader', object: @facade.product

@@ -1,0 +1,15 @@
+.page-container {
+  background: #FFFFFF;
+  margin: 1px 0px;
+  padding: 0 20px;
+  padding-bottom: 15px;
+
+  .ui.header:first-child {
+    margin-top: 0;
+  }
+
+  .title {
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
+}
